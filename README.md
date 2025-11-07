@@ -1,6 +1,9 @@
 # Azure Vocabulary API
 
-Servicio Express con TypeScript para evaluar pronunciación mediante Azure Speech.
+API REST construida con Express y TypeScript que evalúa pronunciación mediante Azure Speech.
+Incluye conversión automática de audio MP3 a WAV cuando es necesario y devuelve métricas detalladas
+de exactitud, fluidez, prosodia y errores por palabra, sílaba y fonema.
+Pensada para integrarse con aplicaciones de aprendizaje de idiomas que requieren análisis en tiempo real.
 
 ## Requisitos
 
@@ -44,12 +47,15 @@ Servicio Express con TypeScript para evaluar pronunciación mediante Azure Speec
 src/
 ├── app.ts                      # Inicialización de Express y wiring de dependencias
 ├── server.ts                   # Punto de entrada (levanta el servidor)
+├── application/
+│   ├── dtos/
+│   │   └── assessPronunciationDto.ts
+│   └── use-cases/
+│       └── assessPronunciationUseCase.ts
 ├── config/
 │   └── azureSpeechConfig.ts    # Configuración centralizada de Azure
 ├── controllers/
 │   └── pronunciationController.ts
-├── dtos/
-│   └── assessPronunciationDto.ts
 ├── interfaces/
 │   └── pronunciationResult.interface.ts
 ├── middlewares/
@@ -59,8 +65,6 @@ src/
 │   └── pronunciationRoutes.ts
 ├── services/
 │   └── azureSpeechService.ts
-├── usecases/
-│   └── assessPronunciationUseCase.ts
 └── utils/
     └── convertAudio.ts
 ```
